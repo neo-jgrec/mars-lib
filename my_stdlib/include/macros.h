@@ -47,4 +47,7 @@
     /* Array macros */
     #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 
+    /* Random macros */
+    #define RANDINT(min, max) ((rand() % (max - min + 1)) + min)
+
 #endif /* !MACROS_H_ */
