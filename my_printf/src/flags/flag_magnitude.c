@@ -7,7 +7,7 @@
 
 #include <unistd.h>
 #include <stdarg.h>
-#include "my.h"
+#include "utils.h"
 
 int print_magnitude_min(UNUSED struct params_s *params, va_list ap)
 {

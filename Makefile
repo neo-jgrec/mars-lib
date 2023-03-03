@@ -20,14 +20,14 @@ all:
 	@$(MAKE) -s -C $(DIR_ARRAYLIB)
 	@$(MAKE) -s $(NAME)
 
-OBJ := $(shell find $(DIR_PRINTF)/$(BUILD_DIR) -name '*.o' -type f)
-OBJ += $(shell find $(DIR_STDLIB)/$(BUILD_DIR) -name '*.o' -type f)
-OBJ += $(shell find $(DIR_ARRAYLIB)/$(BUILD_DIR) -name '*.o' -type f)
-
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)\
+$(NAME):	$(OBJ)
+	@ar rc $(NAME) $(OBJ)\
 	&& echo "\033[1;32m[SPACESHIP READY]\033[0m" $(NAME)\
 	|| echo "\033[1;31m[SPACESHIP CRASHED]\033[0m" $(NAME)
+
+OBJ = $(shell find $(DIR_PRINTF)/$(BUILD_DIR) -name '*.o' -type f)
+OBJ += $(shell find $(DIR_STDLIB)/$(BUILD_DIR) -name '*.o' -type f)
+OBJ += $(shell find $(DIR_ARRAYLIB)/$(BUILD_DIR) -name '*.o' -type f)
 
 debug:
 	@$(MAKE) -s -C $(DIR_PRINTF) debug

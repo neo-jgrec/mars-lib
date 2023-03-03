@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
-#include "my.h"
+#include "utils.h"
 
 int my_getnbr(char const *str);
 

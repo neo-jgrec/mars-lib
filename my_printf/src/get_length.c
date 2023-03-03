@@ -5,7 +5,7 @@
 ** my_getlengthfield
 */
 
-#include "my.h"
+#include "utils.h"
 
 static int my_comp(char const *to_find, char *str)
 {
