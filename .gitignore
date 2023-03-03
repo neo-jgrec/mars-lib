@@ -1,0 +1,10 @@
+# .gitignore
+
+# - every temp file
+build
+
+# - where the norm reports is stored
+report
+
+# - vscode
+.vscode
