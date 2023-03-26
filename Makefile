@@ -22,8 +22,8 @@ all:
 
 $(NAME):	$(OBJ)
 	@ar rc $(NAME) $(OBJ)\
-	&& echo "\033[1;32m[SPACESHIP READY]\033[0m" $(NAME)\
-	|| echo "\033[1;31m[SPACESHIP CRASHED]\033[0m" $(NAME)
+	&& echo -e "\033[1;32m[SPACESHIP READY]\033[0m" $(NAME)\
+	|| echo -e "\033[1;31m[SPACESHIP CRASHED]\033[0m" $(NAME)
 
 OBJ = $(shell find $(DIR_PRINTF)/$(BUILD_DIR) -name '*.o' -type f)
 OBJ += $(shell find $(DIR_STDLIB)/$(BUILD_DIR) -name '*.o' -type f)
@@ -39,14 +39,14 @@ clean:
 	@make -s -C my_printf/ clean
 	@make -s -C my_stdlib/ clean
 	@make -s -C my_arraylib/ clean
-	@echo "\033[1;31m[DELETED]\033[0m" $(BUILD_DIR)
+	@echo -e "\033[1;31m[DELETED]\033[0m" $(BUILD_DIR)
 
 fclean:
 	@make -s -C my_printf/ fclean
 	@make -s -C my_stdlib/ fclean
 	@make -s -C my_arraylib/ fclean
 	@rm -f $(NAME)
-	@echo "\033[1;31m[DELETED]\033[0m" $(NAME)
+	@echo -e "\033[1;31m[DELETED]\033[0m" $(NAME)
 
 re:	fclean all
 
@@ -60,4 +60,4 @@ tests_run:
 .SILENT: all $(NAME) clean fclean re debug
 
 %:
-	@echo "\033[1;31m[ERROR]\033[0m" "No rule to make target '$@'"
+	@echo -e "\033[1;31m[ERROR]\033[0m" "No rule to make target '$@'"

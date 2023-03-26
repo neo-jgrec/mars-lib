@@ -9,11 +9,8 @@
 
 char *my_strchr(const char *str, int c)
 {
-    int i = 0;
-
-    for (; str[i] != '\0'; i++) {
+    for (int i = 0; str[i] != '\0'; i++)
         if (str[i] == c)
-            return ((char *)str + i);
-    }
+            return ((char *) &str[i]);
     return (NULL);
 }
