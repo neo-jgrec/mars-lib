@@ -62,7 +62,6 @@ re:	fclean all
 
 tests_run:	CFLAGS += -lcriterion --coverage -Wl,--wrap=malloc
 tests_run:	fclean
-	echo $(TEST_SRC)
 	@mkdir -p $(BUILD_DIR)
 	@gcc -o $(TEST_NAME) $(SRC) $(TEST_SRC) $(CFLAGS) $(WFLAGS) $(CRITERION) \
 	-I $(TEST_INCLUDE_DIR) $(LCOV)\

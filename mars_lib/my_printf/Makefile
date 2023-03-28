@@ -64,7 +64,6 @@ re:	fclean all
 
 tests_run:	CFLAGS += -lcriterion --coverage
 tests_run:	fclean
-	echo $(TEST_SRC)
 	@mkdir -p $(BUILD_DIR)
 	@gcc -o $(TEST_NAME) $(SRC) $(TEST_SRC) $(CFLAGS) $(WFLAGS) $(CRITERION) \
 	$(LCOV) \
