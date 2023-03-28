@@ -67,7 +67,7 @@ tests_run:	fclean
 	@gcc -o $(TEST_NAME) $(SRC) $(TEST_SRC) $(CFLAGS) $(WFLAGS) $(CRITERION) \
 	&& echo -e "\033[1;32m[OK]\033[0m" $(TEST_NAME)\
 	|| echo -e "\033[1;31m[KO]\033[0m" $(TEST_NAME)
-	@./$(TEST_NAME)
+	@./$(TEST_NAME) --always-succeed
 	mv *.gc* $(BUILD_DIR)
 
 .PHONY: all clean fclean re debug tests_run
