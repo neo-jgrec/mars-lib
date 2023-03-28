@@ -25,5 +25,9 @@ Mars-lib is a library that contains a set of tools to help you in your developme
 - **my_printf** : a function that allows you to print formatted strings.
 - **mini_linked_list** : a set of functions that allows you to create and manipulate linked lists using tailq. The lib lacks a lot of functions, but I will add them in the future.
 
+### Coverage
+
+[![codecov](https://codecov.io/gh/neo-jgrec/mars-lib/branch/master/graph/badge.svg?token=9G2W598VF8)](https://codecov.io/gh/neo-jgrec/mars-lib)
+
 ### Special mention
 [Alexis Boitel](https://https://github.com/DiaboloAB) : for his help in the development of the printf library made with him in 2 weeks.
