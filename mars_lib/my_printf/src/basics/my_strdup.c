@@ -6,24 +6,17 @@
 */
 
 #include <stdlib.h>
+#include "utils.h"
 
-static char *my_strcpy(char *dest, char const *src)
+char *my_strdup(const char *str)
 {
     int i = 0;
+    char *new_str = malloc(sizeof(char) * (my_strlen(str) + 1));
 
-    for (; src[i] != '\0'; i++)
-        dest[i] = src[i];
-    dest[i] = '\0';
-    return dest;
-}
-
-char *my_strdup(char const *src)
-{
-    int size = 0;
-
-    for (int i = 0; src[i] != '\0'; i++)
-        size++;
-    char *duped = malloc(sizeof(char) * size + 1);
-    my_strcpy(duped, src);
-    return duped;
+    if (new_str == NULL)
+        return (NULL);
+    for (; str[i] != '\0'; i++)
+        new_str[i] = str[i];
+    new_str[i] = '\0';
+    return (new_str);
 }

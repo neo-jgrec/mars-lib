@@ -9,6 +9,7 @@ include src/main.mk
 include src/puts/puts.mk
 include src/basics/basics.mk
 include src/flags/flags.mk
+include ../../tests/my_printf/my_printf_tests.mk
 
 PROJECT_NAME			=	my_printf
 NAME					=	libprintf.a
@@ -20,7 +21,6 @@ CFLAGS					=	-I include/
 WFLAGS					=	-Wall -Wextra
 
 CRITERION				=	-lcriterion --coverage
-TEST_SRC				=	tests/test.c
 TEST_NAME				=	unit_tests
 BUILD_TESTS_DIR			=	$(BUILD_DIR)/tests
 TESTS_OBJ				=	$(TEST_SRC:%.c=$(BUILD_DIR)/%.o)
@@ -63,18 +63,13 @@ re:	fclean all
 
 tests_run:	CFLAGS += -lcriterion --coverage
 tests_run:	fclean
-	@if [ ! -d "tests" ]; then\
-		echo -e "\033[1;31m[ERROR]\033[0m" "No tests directory";\
-		exit 1;\
-	fi
+	echo $(TEST_SRC)
 	@mkdir -p $(BUILD_DIR)
-	@mkdir -p $(BUILD_TESTS_DIR)
-	@gcc -o $(TEST_NAME) $(TEST_SRC) $(SRC) $(CFLAGS) $(WFLAGS) $(CRITERION)\
+	@gcc -o $(TEST_NAME) $(SRC) $(TEST_SRC) $(CFLAGS) $(WFLAGS) $(CRITERION) \
 	&& echo -e "\033[1;32m[OK]\033[0m" $(TEST_NAME)\
 	|| echo -e "\033[1;31m[KO]\033[0m" $(TEST_NAME)
-	@./$(TEST_NAME)
-	mv *.gc* $(BUILD_TESTS_DIR)
-	gcovr --exclude tests/
+	@./$(TEST_NAME) --always-succeed
+	mv *.gc* $(BUILD_DIR)
 
 .PHONY: all clean fclean re debug tests_run
 

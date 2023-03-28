@@ -3,6 +3,7 @@
 # - every temp file
 build
 *.a
+unit_tests
 
 # - where the norm reports is stored
 report
