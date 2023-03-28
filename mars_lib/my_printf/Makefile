@@ -24,6 +24,7 @@ CRITERION				=	-lcriterion --coverage
 TEST_NAME				=	unit_tests
 BUILD_TESTS_DIR			=	$(BUILD_DIR)/tests
 TESTS_OBJ				=	$(TEST_SRC:%.c=$(BUILD_DIR)/%.o)
+LCOV 					:= 	-fprofile-arcs -ftest-coverage
 
 all:	$(NAME)
 
@@ -66,6 +67,7 @@ tests_run:	fclean
 	echo $(TEST_SRC)
 	@mkdir -p $(BUILD_DIR)
 	@gcc -o $(TEST_NAME) $(SRC) $(TEST_SRC) $(CFLAGS) $(WFLAGS) $(CRITERION) \
+	$(LCOV) \
 	&& echo -e "\033[1;32m[OK]\033[0m" $(TEST_NAME)\
 	|| echo -e "\033[1;31m[KO]\033[0m" $(TEST_NAME)
 	@./$(TEST_NAME) --always-succeed
