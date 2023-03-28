@@ -2,6 +2,7 @@
 
 # - every temp file
 build
+*.a
 
 # - where the norm reports is stored
 report
