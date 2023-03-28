@@ -17,7 +17,7 @@ jobs:
       run: |
         cd mars_lib
         make tests_run
-        lcov --directory $(pwd) --capture --output-file coverage.info
+        lcov --directory $(pwd) --capture --output-file ../coverage.info
     - name: Generate coverage report
       run: |
         genhtml coverage.info --output-directory out
