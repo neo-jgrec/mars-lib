@@ -8,10 +8,12 @@
 #include <stdarg.h>
 #include "my_stdlib.h"
 
-static char *my_strcat_realloc(char *str, char *to_add)
+char *my_strcat_realloc(char *str, char *to_add)
 {
     char *tmp = malloc(sizeof(char) * (my_strlen(str) + my_strlen(to_add) + 1));
 
+    if (tmp == NULL)
+        return (NULL);
     tmp = my_strcpy(tmp, str);
     tmp = my_strcat(tmp, to_add);
     free(str);
@@ -24,6 +26,8 @@ char *my_strcat_inf(int nb, ...)
     char *str = malloc(sizeof(char) * 1);
     char *to_add = NULL;
 
+    if (str == NULL)
+        return (NULL);
     str[0] = '\0';
     va_start(ap, nb);
     for (int i = 0; i < nb; i++) {

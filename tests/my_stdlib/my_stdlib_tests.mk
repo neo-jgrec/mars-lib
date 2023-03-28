@@ -7,4 +7,6 @@
 
 PREFIX		:=	../../tests/my_stdlib/
 
-TEST_SRC	:=	$(PREFIX)basics.c
+TEST_SRC	:=	$(PREFIX)basics.c \
+				$(PREFIX)malloc_wrapper.c \
+				$(PREFIX)test_failing_memory_allocation.c

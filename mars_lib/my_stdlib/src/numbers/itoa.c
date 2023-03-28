@@ -13,10 +13,10 @@ char *my_itoa(int nb)
     int sign = 1;
     char *str = malloc(sizeof(char) * 12);
 
-    if (nb < 0) {
-        sign = -1;
-        nb *= -1;
-    }
+    if (str == NULL)
+        return (NULL);
+    sign = (nb < 0) ? -1 : 1;
+    nb = (nb < 0) ? nb * -1 : nb;
     for (; nb > 0; i++) {
         str[i] = nb % 10 + '0';
         nb /= 10;

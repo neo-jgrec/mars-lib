@@ -13,6 +13,8 @@ char *my_strremove(char *str, const char *str_to_remove)
     int i = 0;
     int j = 0;
 
+    if (new_str == NULL)
+        return (NULL);
     for (; str[i] != '\0'; i++) {
         if (my_strchr(str_to_remove, str[i]) == NULL) {
             new_str[j] = str[i];

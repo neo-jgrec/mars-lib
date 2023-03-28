@@ -38,14 +38,6 @@
     float my_atof(const char *str);
 
     /**
-    * @brief Converts a string to a double.
-    *
-    * @param str String to convert.
-    * @return double
-    */
-    double my_strtod(const char *str, char **endptr);
-
-    /**
     * @brief Concatenates n first characters of src to dest.
     *
     * @param dest String to concatenate to.
@@ -207,5 +199,31 @@
     * @return char* - the concatenated string
     */
     char *my_strcat_inf(int nb, ...);
+
+    /**
+    * @brief Convert a float to a string
+    *
+    * @param nb
+    * @param precision
+    * @return char*
+    */
+    char *my_ftoa(float nb, int precision);
+
+    /**
+    * @brief Convert an int to a string
+    *
+    * @param nb
+    * @return char*
+    */
+    char *my_itoa(int nb);
+
+    /**
+    * @brief Concatenate a string to another string and realloc the first string
+    *
+    * @param str
+    * @param to_add
+    * @return char*
+    */
+    char *my_strcat_realloc(char *str, char *to_add);
 
 #endif /* !STDLIB_H_ */

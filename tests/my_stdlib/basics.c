@@ -32,12 +32,6 @@ Test(test_my_atof, basics)
     cr_expect_float_eq(my_atof("-123.456"), -123.456f, epsilon);
 }
 
-Test(test_my_my_strtod, basics)
-{
-    float epsilon = 0.0001f;
-    cr_expect_float_eq(my_strtod("0", NULL), 0.0f, epsilon);
-}
-
 Test(test_my_strncat, basics)
 {
     char *str = "Hello World!";
@@ -178,4 +172,84 @@ Test(test_my_strcat_inf, basics)
 {
     char *str = my_strcat_inf(4, "Hello", " ", "World", "!");
     cr_assert_str_eq(str, "Hello World!");
+}
+
+Test(test_my_strcat_realloc, basics)
+{
+    char *str = my_calloc(1, 12);
+    str = my_strcpy(str, "Hello");
+    str = my_strcat_realloc(str, " World!");
+    cr_assert_str_eq(str, "Hello World!");
+}
+
+Test(test_my_ftoa, basics)
+{
+    char *str = my_ftoa(3.21, 2);
+    cr_assert_str_eq(str, "3.21");
+    str = my_ftoa(-3.21, 2);
+    cr_assert_str_eq(str, "-3.21");
+}
+
+Test(test_my_itoa, basics)
+{
+    char *str = my_itoa(321);
+    cr_assert_str_eq(str, "321");
+    str = my_itoa(-321);
+    cr_assert_str_eq(str, "-321");
+}
+
+Test(test_my_strchr, find_null_character)
+{
+    char str[] = "hello, world!";
+    char *result = my_strchr(str, '\0');
+    cr_assert_eq(result, str + 13);
+}
+
+Test(test_my_strstr, returns_null_when_substring_not_found) {
+    const char *fullstring = "hello world";
+    const char *substring = "goodbye";
+    char *result = my_strstr(fullstring, substring);
+    cr_assert_null(result);
+}
+
+Test(test_my_strcmp, one_string_is_null) {
+    const char *str1 = NULL;
+    const char *str2 = "hello";
+    int result = my_strcmp(str1, str2);
+    cr_assert_eq(result, -1);
+}
+
+Test(test_my_strncmp, one_is_null) {
+    const char *str1 = NULL;
+    const char *str2 = "hello";
+    int result = my_strncmp(str1, str2, 5);
+    cr_assert_eq(result, -1);
+}
+
+Test(my_memmove, moves_data_correctly_when_destination_is_before_source) {
+    char src[] = "hello world";
+    char dest[] = "goodbye";
+    my_memmove(dest, src, sizeof(src));
+    cr_assert_str_eq(dest, "hello world");
+}
+
+Test(my_memmove, moves_data_correctly_when_source_is_before_destination) {
+    char src[] = "hello world";
+    char dest[] = "goodbye";
+    my_memmove(src, dest, sizeof(dest));
+    cr_assert_str_eq(src, "goodbye");
+}
+
+Test(my_memmove, returns_correct_pointer_when_destination_is_before_source) {
+    char src[] = "hello world";
+    char dest[] = "goodbye";
+    char *result = my_memmove(dest, src, sizeof(src));
+    cr_assert_eq(result, dest);
+}
+
+Test(my_memmove, returns_correct_pointer_when_source_is_before_destination) {
+    char src[] = "hello world";
+    char dest[] = "goodbye";
+    char *result = my_memmove(src, dest, sizeof(dest));
+    cr_assert_eq(result, src);
 }
