@@ -35,7 +35,7 @@
     * @param str String to convert.
     * @return float
     */
-    float my_atof(const char *str);
+    double my_atof(const char *str);
 
     /**
     * @brief Concatenates n first characters of src to dest.
@@ -207,7 +207,7 @@
     * @param precision
     * @return char*
     */
-    char *my_ftoa(float nb, int precision);
+    char *my_ftoa(double nb, int precision);
 
     /**
     * @brief Convert an int to a string
@@ -225,5 +225,15 @@
     * @return char*
     */
     char *my_strcat_realloc(char *str, char *to_add);
+
+    /**
+    * @brief Convert a number from a base to another
+    *
+    * @param nbr
+    * @param base_from
+    * @param base_to
+    * @return char*
+    */
+    char *my_convert_base(char *nbr, char *base_from, char *base_to);
 
 #endif /* !STDLIB_H_ */

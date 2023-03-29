@@ -8,9 +8,9 @@
 #include "macros.h"
 #include <stdint.h>
 
-static float my_powf(float base, int exponent)
+static double my_powf(double base, int exponent)
 {
-    float result = 1;
+    double result = 1;
 
     if (exponent < 0) {
         exponent = -exponent;
@@ -25,12 +25,12 @@ static float my_powf(float base, int exponent)
     return result;
 }
 
-float my_atof(const char *str)
+double my_atof(const char *str)
 {
     int32_t mantissa = 0;
     int exponent = 0;
     int sign = 1;
-    float result;
+    double result;
 
     for (; *str == ' '; str++);
     if (*str == '-' || *str == '+') {
@@ -44,6 +44,6 @@ float my_atof(const char *str)
         for (; IS_NUM(*str); str++, exponent--)
             mantissa = mantissa * 10 + (*str - '0');
     }
-    result = (float)mantissa * my_powf(10, exponent) * sign;
+    result = (double)mantissa * my_powf(10, exponent) * sign;
     return result;
 }

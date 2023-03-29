@@ -7,4 +7,5 @@
 
 SRC += 	src/string/conversion/atof.c		\
 		src/string/conversion/atoi.c		\
-		src/string/conversion/atol.c
+		src/string/conversion/atol.c		\
+		src/string/conversion/base.c
